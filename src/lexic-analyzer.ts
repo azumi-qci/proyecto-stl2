@@ -66,7 +66,7 @@ export class LexicAnalyzer {
         case 4:
           if (this.isDigit(currentChar)) {
             symbol += currentChar;
-          } else if (currentChar === '~') {
+          } else if (this.isSpace(currentChar) || currentChar === '~') {
             state = 2;
             ended = true;
           }

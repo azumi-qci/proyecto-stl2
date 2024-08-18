@@ -6,7 +6,7 @@ function main(): void {
   console.log('\n- Analizador léxico -'.underline.green);
   console.log('Símbolo\t\tTipo'.bgBlue);
 
-  let analyzer = new LexicAnalyzer('new hello 88.2');
+  let analyzer = new LexicAnalyzer('new hello 88.2 h32');
 
   while (true) {
     let [symbol, type] = analyzer.nextSymbol();
