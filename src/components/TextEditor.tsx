@@ -1,17 +1,29 @@
-import { FC, useState } from 'react';
 import CodeEditor from '@uiw/react-textarea-code-editor';
+import { FC } from 'react';
 
-const TextEditor: FC = () => {
-  const [code, setCode] = useState('');
+import Button from './Button';
 
+interface TextEditorProps {
+  input: string;
+  setInput(input: string): void;
+}
+
+const TextEditor: FC<TextEditorProps> = ({ input, setInput }) => {
   return (
-    <div>
+    <div className='flex flex-col h-full'>
       <CodeEditor
-        language="cpp"
-        onChange={(e) => setCode(e.target.value)}
+        className='grow rounded'
+        language='cpp'
+        onChange={(e) => setInput(e.target.value)}
         padding={15}
-        value={code}
+        value={input}
+        style={{
+          fontFamily:
+            'ui-monospace, SFMono-Regular, SF Mono,Consolas, Liberation Mono, Menlo, monospace',
+          fontSize: 16,
+        }}
       />
+      <Button className='mt-2'>Cargar archivo</Button>
     </div>
   );
 };
