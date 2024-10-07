@@ -17,7 +17,8 @@ const LexicAnalyzer: FC<LexicAnalyzer> = ({ tokens, getTokens }) => {
         <Button onClick={getTokens}>Analizar código</Button>
       </div>
       <div className='flex flex-col bg-gray-500 rounded h-80'>
-        <div className='grid grid-cols-2 font-bold p-2 text-white border-b border-gray-400'>
+        <div className='grid grid-cols-3 font-bold p-2 text-white border-b border-gray-400'>
+          <p>ID</p>
           <p>Símbolo</p>
           <p>Valor</p>
         </div>
@@ -25,9 +26,10 @@ const LexicAnalyzer: FC<LexicAnalyzer> = ({ tokens, getTokens }) => {
           <div className='flex flex-col grow overflow-scroll'>
             {tokens.map((item, index) => (
               <div
-                className='grid grid-cols-2 px-2 py-1'
+                className='grid grid-cols-3 px-2 py-1 text-gray-300'
                 key={`item-${item.token}-${index}`}
               >
+                <p>{item.id}</p>
                 <p>{item.token}</p>
                 <p>{item.lexeme}</p>
               </div>
