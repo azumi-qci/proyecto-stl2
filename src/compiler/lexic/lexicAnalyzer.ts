@@ -10,7 +10,7 @@ import {
 
 import { Token } from '../interfaces/token';
 
-export const analyzeInput = (input: string): Token[] => {
+export const lexicAnalyzer = (input: string): Token[] => {
   let currentToken = '';
   let foundTokens: Token[] = [];
   const inputCode = `${input}$`;
@@ -43,12 +43,14 @@ export const analyzeInput = (input: string): Token[] => {
             id: tokenTypes[currentChar as keyof typeof tokenTypes].id,
             token: tokenTypes[currentChar as keyof typeof tokenTypes].name,
             lexeme: currentChar,
+            code: tokenTypes[currentChar as keyof typeof tokenTypes].code,
           });
         } else if (currentChar === '$') {
           foundTokens.push({
             id: tokenTypes['$'].id,
             token: tokenTypes['$'].name,
             lexeme: currentToken,
+            code: tokenTypes['$'].code,
           });
         }
         break;
@@ -66,6 +68,7 @@ export const analyzeInput = (input: string): Token[] => {
             id: tokenTypes[currentToken as keyof typeof tokenTypes].id,
             token: tokenTypes[currentToken as keyof typeof tokenTypes].name,
             lexeme: currentToken,
+            code: tokenTypes[currentToken as keyof typeof tokenTypes].code,
           });
         } else if (dataType.includes(currentToken)) {
           // Found data type
@@ -73,6 +76,7 @@ export const analyzeInput = (input: string): Token[] => {
             id: tokenTypes['dataType'].id,
             token: tokenTypes['dataType'].name,
             lexeme: currentToken,
+            code: tokenTypes['dataType'].code,
           });
         } else {
           // Found identifier
@@ -80,6 +84,7 @@ export const analyzeInput = (input: string): Token[] => {
             id: tokenTypes['id'].id,
             token: tokenTypes['id'].name,
             lexeme: currentToken,
+            code: tokenTypes['id'].code,
           });
         }
 
@@ -105,6 +110,9 @@ export const analyzeInput = (input: string): Token[] => {
             lexeme: isFloatingPoint
               ? parseFloat(currentToken)
               : parseInt(currentToken),
+            code: isFloatingPoint
+              ? tokenTypes['real'].code
+              : tokenTypes['int'].code,
           });
 
           // Reset state
@@ -123,6 +131,7 @@ export const analyzeInput = (input: string): Token[] => {
             id: tokenTypes[currentToken as keyof typeof tokenTypes].id,
             token: tokenTypes[currentToken as keyof typeof tokenTypes].name,
             lexeme: currentToken,
+            code: tokenTypes[currentToken as keyof typeof tokenTypes].code,
           });
 
           // Reset state
@@ -140,6 +149,7 @@ export const analyzeInput = (input: string): Token[] => {
             id: tokenTypes['string'].id,
             token: tokenTypes['string'].name,
             lexeme: currentToken,
+            code: tokenTypes['string'].code,
           });
         }
 
@@ -155,6 +165,7 @@ export const analyzeInput = (input: string): Token[] => {
           id: -1,
           token: 'Error',
           lexeme: currentToken,
+          code: 'error',
         });
         break;
     }

@@ -1,56 +1,58 @@
-export const rules = {
+import { Rules } from '../interfaces/rules';
+
+export const rules: Rules = {
   1: {
     rule: '<program> ::= <definitions>',
     noTerminal: 'program',
-    symbolsSequense: ['definitions'],
+    symbolsSequence: ['definitions'],
     symbolsNumber: 1,
   },
   2: {
     rule: '<definitions> ::= \\e',
     noTerminal: 'definitions',
-    symbolsSequense: [],
+    symbolsSequence: [],
     symbolsNumber: 0,
   },
   3: {
     rule: '<definitions> ::= <definition> <definitions>',
     noTerminal: 'definitions',
-    symbolsSequense: ['definition', 'definitions'],
+    symbolsSequence: ['definition', 'definitions'],
     symbolsNumber: 2,
   },
   4: {
-    rule: '<definition> ::= <defVariable>',
+    rule: '<definition> ::= <variableDef>',
     noTerminal: 'definition',
-    symbolsSequense: ['defVariable'],
+    symbolsSequence: ['variableDef'],
     symbolsNumber: 1,
   },
   5: {
-    rule: '<definition> ::= <defFunction>',
+    rule: '<definition> ::= <functionDef>',
     noTerminal: 'definition',
-    symbolsSequense: ['defFunction'],
+    symbolsSequence: ['functionDef'],
     symbolsNumber: 0,
   },
   6: {
-    rule: '<defVariable> ::= type indentifier <variableList> ; ',
-    noTerminal: '',
-    symbolsSequense: ['type', 'indentifier', 'variableList', ';'],
+    rule: '<variableDef> ::= type indentifier <variableList> ;',
+    noTerminal: 'variableDef',
+    symbolsSequence: ['type', 'indentifier', 'variableList', ';'],
     symbolsNumber: 4,
   },
   7: {
     rule: '<variableList> ::= \\e',
     noTerminal: 'variableList',
-    symbolsSequense: [],
+    symbolsSequence: [],
     symbolsNumber: 0,
   },
   8: {
     rule: '<variableList> ::= , identifier <variableList>',
     noTerminal: 'variableList',
-    symbolsSequense: [',', 'identifier', 'variableList'],
+    symbolsSequence: [',', 'identifier', 'variableList'],
     symbolsNumber: 0,
   },
   9: {
-    rule: '<defFunction> ::= type identifier ( <parameters> ) <functionBlock>',
-    noTerminal: 'defFunction',
-    symbolsSequense: [
+    rule: '<functionDef> ::= type identifier ( <parameters> ) <functionBlock>',
+    noTerminal: 'functionDef',
+    symbolsSequence: [
       'type',
       'identifier',
       '(',
@@ -63,7 +65,7 @@ export const rules = {
   10: {
     rule: '<parameters> ::= \\e',
     noTerminal: 'parameters',
-    symbolsSequense: [],
+    symbolsSequence: [],
     symbolsNumber: 0,
   },
   11: {
@@ -91,21 +93,21 @@ export const rules = {
     symbolsNumber: 3,
   },
   15: {
-    rule: '<localDefinitions> ::= e ',
-    noTerminal: ['localDefinitions'],
+    rule: '<localDefinitions> ::= e',
+    noTerminal: 'localDefinitions',
     symbolsSequence: [],
     symbolsNumber: 0,
   },
   16: {
-    rule: '<localDefinitions> ::= <localDefinition> <localDefinitions> ',
+    rule: '<localDefinitions> ::= <localDefinition> <localDefinitions>',
     noTerminal: 'localDefinitions',
     symbolsSequence: ['localDefinition', 'localDefinitions'],
     symbolsNumber: 2,
   },
   17: {
-    rule: '<localDefinition> ::= <DefVar> ',
+    rule: '<localDefinition> ::= <variableDefinition>',
     noTerminal: 'localDefinition',
-    symbolsSequence: ['DefVar'],
+    symbolsSequence: ['variableDefinition'],
     symbolsNumber: 1,
   },
   18: {
@@ -205,7 +207,7 @@ export const rules = {
     symbolsNumber: 0,
   },
   34: {
-    rule: '<argumentList> ::= , <expression> <argumentList> ',
+    rule: '<argumentList> ::= , <expression> <argumentList>',
     noTerminal: 'argumentList',
     symbolsSequence: [',', 'expression', 'argumentList'],
     symbolsNumber: 3,

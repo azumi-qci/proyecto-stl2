@@ -4,26 +4,24 @@ import { Token } from '../compiler/interfaces/token';
 
 import Button from './Button';
 
-interface LexicAnalyzerProps {
-  tokens: Token[];
-
-  getTokens(): void;
+interface ParserProps {
+  parseCode(): void;
 }
 
-const LexicAnalyzer: FC<LexicAnalyzerProps> = ({ tokens, getTokens }) => {
+const Parser: FC<ParserProps> = ({ parseCode }) => {
   return (
-    <div className='flex flex-col'>
+    <div className='flex flex-col mt-2'>
       <div className='flex justify-between items-center mb-2'>
-        <p className='font-bold px-2 rounded text-lg'>Tokens obtenidos</p>
-        <Button onClick={getTokens}>Analizar código</Button>
+        <p className='font-bold px-2 rounded text-lg'>Analizador sintáctico</p>
+        <Button onClick={parseCode}>Procesar código</Button>
       </div>
-      <div className='flex flex-col bg-gray-500 rounded h-60'>
+      <div className='flex flex-col bg-gray-500 rounded h-80'>
         <div className='grid grid-cols-3 font-bold p-2 text-white border-b border-gray-400'>
           <p>ID</p>
           <p>Símbolo</p>
           <p>Valor</p>
         </div>
-        {tokens.length ? (
+        {/* {tokens.length ? (
           <div className='flex flex-col grow overflow-scroll'>
             {tokens.map((item, index) => (
               <div
@@ -40,10 +38,10 @@ const LexicAnalyzer: FC<LexicAnalyzerProps> = ({ tokens, getTokens }) => {
           <div className='flex p-4 justify-center items-center grow'>
             <p className='text-white text-lg text-center'>Sin tokens</p>
           </div>
-        )}
+        )} */}
       </div>
     </div>
   );
 };
 
-export default LexicAnalyzer;
+export default Parser;

@@ -1,4 +1,6 @@
-export const lrTable = {
+import { Grammar } from '../interfaces/grammar';
+
+export const lrTable: Grammar = {
   0: {
     type: 5,
     $: -2,
