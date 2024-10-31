@@ -1,50 +1,19 @@
-# React + TypeScript + Vite
+# Seminario de Traductores de Lenguajes II
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Alumno:** Hernández Suárez Cesar Alejandro
 
-Currently, two official plugins are available:
+**Profesor:** López Franco Michel Emanuel
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Avance: analizador léxico
 
-## Expanding the ESLint configuration
+### Objetivo
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Con el código introducido, separar las líneas en tokens, esto con el propósito de que en la siguiente fase se tomen estos tokens para el funcionamiento adecuado del analizador sintáctico.
 
-- Configure the top-level `parserOptions` property like this:
+### Trabajo realizado
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+![Captura 1](./img/screenshot-01.png)
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+En la parte izquierda de la aplicación se encuentra el editor de código. Para una mejor presentación, se usó una librería de React la cual permite asignar código de colores legible para código, el cual soporta múltiples lenguajes de programación.
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+En la parte de la derecha se encuentra la lista de tokens obtenidos por la aplicación, estos pueden ser desde tipos de datos, identificadores, abrir y cerrar paréntesis y más.
