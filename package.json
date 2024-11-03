@@ -15,7 +15,8 @@
     "@fortawesome/react-fontawesome": "^0.2.2",
     "@uiw/react-textarea-code-editor": "^3.0.2",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "use-file-picker": "^2.1.2"
   },
   "devDependencies": {
     "@eslint/js": "^9.9.0",
