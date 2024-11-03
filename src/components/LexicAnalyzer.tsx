@@ -2,20 +2,15 @@ import { FC } from 'react';
 
 import { Token } from '../compiler/interfaces/token';
 
-import Button from './Button';
-
 interface LexicAnalyzerProps {
   tokens: Token[];
-
-  getTokens(): void;
 }
 
-const LexicAnalyzer: FC<LexicAnalyzerProps> = ({ tokens, getTokens }) => {
+const LexicAnalyzer: FC<LexicAnalyzerProps> = ({ tokens }) => {
   return (
     <div className='flex flex-col'>
       <div className='flex justify-between items-center mb-2'>
         <p className='font-bold px-2 rounded text-lg'>Tokens obtenidos</p>
-        <Button onClick={getTokens}>Analizar código</Button>
       </div>
       <div className='flex flex-col bg-gray-500 rounded h-60'>
         <div className='grid grid-cols-3 font-bold p-2 text-white border-b border-gray-400'>

@@ -1,44 +1,43 @@
 import { FC } from 'react';
 
-import { Token } from '../compiler/interfaces/token';
-
-import Button from './Button';
+import { History } from '../compiler/interfaces/history';
 
 interface ParserProps {
-  parseCode(): void;
+  history?: History[];
 }
 
-const Parser: FC<ParserProps> = ({ parseCode }) => {
+const Parser: FC<ParserProps> = ({ history }) => {
   return (
     <div className='flex flex-col mt-2'>
       <div className='flex justify-between items-center mb-2'>
-        <p className='font-bold px-2 rounded text-lg'>Analizador sintáctico</p>
-        <Button onClick={parseCode}>Procesar código</Button>
+        <p className='font-bold px-2 rounded text-lg'>Pila</p>
       </div>
-      <div className='flex flex-col bg-gray-500 rounded h-80'>
-        <div className='grid grid-cols-3 font-bold p-2 text-white border-b border-gray-400'>
-          <p>ID</p>
-          <p>Símbolo</p>
-          <p>Valor</p>
-        </div>
-        {/* {tokens.length ? (
+      <div className='flex flex-col bg-gray-500 rounded h-96'>
+        {history && history.length ? (
           <div className='flex flex-col grow overflow-scroll'>
-            {tokens.map((item, index) => (
+            {history.map((item, index) => (
               <div
-                className='grid grid-cols-3 px-2 py-1 text-gray-300'
-                key={`item-${item.token}-${index}`}
+                className='p-2 text-gray-300 border-b'
+                key={`stack-${index}`}
               >
-                <p>{item.id}</p>
-                <p>{item.token}</p>
-                <p>{item.lexeme}</p>
+                <p>
+                  <div className='inline font-bold'>Estado: </div>{' '}
+                  {item.stack.map((i) => `${i.value} `)}
+                </p>
+                <p>
+                  <div className='inline font-bold'>Entrada:</div> {item.input}
+                </p>
+                <p>
+                  <div className='inline font-bold'>Salida:</div> {item.output}
+                </p>
               </div>
             ))}
           </div>
         ) : (
           <div className='flex p-4 justify-center items-center grow'>
-            <p className='text-white text-lg text-center'>Sin tokens</p>
+            <p className='text-white text-lg text-center'>Pila vacía</p>
           </div>
-        )} */}
+        )}
       </div>
     </div>
   );
