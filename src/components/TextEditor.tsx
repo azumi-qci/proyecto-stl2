@@ -1,5 +1,7 @@
 import CodeEditor from '@uiw/react-textarea-code-editor';
 import { FC } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUpload } from '@fortawesome/free-solid-svg-icons';
 
 import Button from './Button';
 
@@ -23,7 +25,9 @@ const TextEditor: FC<TextEditorProps> = ({ input, setInput }) => {
           fontSize: 16,
         }}
       />
-      <Button className='mt-2'>Cargar archivo</Button>
+      <Button className='mt-2'>
+        <FontAwesomeIcon icon={faUpload} /> Cargar archivo
+      </Button>
     </div>
   );
 };

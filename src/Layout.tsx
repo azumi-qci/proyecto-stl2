@@ -1,4 +1,6 @@
 import { FC, useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGears } from '@fortawesome/free-solid-svg-icons';
 
 import { Token } from './compiler/interfaces/token';
 import { TreeNode } from './compiler/interfaces/treeNode';
@@ -35,7 +37,9 @@ const Layout: FC = () => {
           history={!parserOutput?.error ? parserOutput?.history : undefined}
         />
         <div className='flex my-2' onClick={processCode}>
-          <Button className='w-full'>Procesar código</Button>
+          <Button className='w-full'>
+            <FontAwesomeIcon icon={faGears} /> Procesar código
+          </Button>
         </div>
         {parserOutput?.error ? (
           <div className='flex justify-end p-2'>
