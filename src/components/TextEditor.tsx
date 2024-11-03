@@ -1,7 +1,7 @@
+import { faUpload } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import CodeEditor from '@uiw/react-textarea-code-editor';
 import { FC } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUpload } from '@fortawesome/free-solid-svg-icons';
 
 import Button from './Button';
 
@@ -21,7 +21,7 @@ const TextEditor: FC<TextEditorProps> = ({ input, setInput }) => {
         value={input}
         style={{
           fontFamily:
-            'ui-monospace, SFMono-Regular, SF Mono,Consolas, Liberation Mono, Menlo, monospace',
+            'ui-monospace, SFMono-Regular, SF Mono, Consolas, Liberation Mono, Menlo, monospace',
           fontSize: 16,
         }}
       />

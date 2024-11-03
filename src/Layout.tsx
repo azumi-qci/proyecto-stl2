@@ -1,18 +1,18 @@
-import { FC, useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGears } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { FC, useState } from 'react';
 
+import { History } from './compiler/interfaces/history';
 import { Token } from './compiler/interfaces/token';
 import { TreeNode } from './compiler/interfaces/treeNode';
-import { History } from './compiler/interfaces/history';
 
 import { lexicAnalyzer } from './compiler/lexic/lexicAnalyzer';
 import { parserAnalyzer } from './compiler/parser/parserAnalyzer';
 
+import Button from './components/Button';
 import LexicAnalyzer from './components/LexicAnalyzer';
 import Parser from './components/Parser';
 import TextEditor from './components/TextEditor';
-import Button from './components/Button';
 
 const Layout: FC = () => {
   const [input, setInput] = useState('');
