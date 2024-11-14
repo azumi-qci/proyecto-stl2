@@ -1,4 +1,4 @@
-import { faGears } from '@fortawesome/free-solid-svg-icons';
+import { faGears, faTree } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { FC, useState } from 'react';
 
@@ -13,13 +13,15 @@ import Button from './components/Button';
 import LexicAnalyzer from './components/LexicAnalyzer';
 import Parser from './components/Parser';
 import TextEditor from './components/TextEditor';
+import TreeView from './components/TreeView';
 
 const Layout: FC = () => {
   const [input, setInput] = useState('');
   const [tokens, setTokens] = useState<Token[]>([]);
+  const [showTree, setShowTree] = useState(false);
   const [parserOutput, setParserOutput] = useState<{
     history: History[];
-    tree: TreeNode | null;
+    tree?: TreeNode;
     error: boolean;
   }>();
 
@@ -36,15 +38,28 @@ const Layout: FC = () => {
         <Parser
           history={!parserOutput?.error ? parserOutput?.history : undefined}
         />
-        <div className='flex my-2' onClick={processCode}>
-          <Button className='w-full'>
-            <FontAwesomeIcon icon={faGears} /> Procesar código
+        <div className='flex flex-col my-2' onClick={processCode}>
+          <Button className='mb-2'>
+            <FontAwesomeIcon icon={faGears} className='mr-2' /> Procesar código
+          </Button>
+          <Button
+            disabled={!parserOutput?.tree}
+            onClick={() => setShowTree(true)}
+          >
+            <FontAwesomeIcon icon={faTree} className='mr-2' />
+            Ver árbol
           </Button>
         </div>
         {parserOutput?.error ? (
           <div className='flex justify-end p-2'>
             <p className='font-bold text-red-500'>La entrada no es válida</p>
           </div>
+        ) : null}
+        {showTree ? (
+          <TreeView
+            data={parserOutput?.tree}
+            onDismiss={() => setShowTree(false)}
+          />
         ) : null}
       </div>
     </div>

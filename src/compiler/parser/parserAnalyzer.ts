@@ -11,7 +11,7 @@ import { StackElement } from '../classes/stackElement';
 
 export const parserAnalyzer = (
   input: string
-): { history: History[]; tree: TreeNode | null; error: boolean } => {
+): { history: History[]; tree?: TreeNode; error: boolean } => {
   const stack = [];
 
   // Initialize the stack
@@ -27,7 +27,7 @@ export const parserAnalyzer = (
   let currentToken = 0;
   let history: History[] = [];
   let children: Children[] = [];
-  let tree: TreeNode | null = null;
+  let tree: TreeNode | undefined = undefined;
 
   try {
     while (currentToken < tokens.length) {
