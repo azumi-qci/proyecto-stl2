@@ -82,8 +82,6 @@ export const parserAnalyzer = (
 
         const newElement = new StackElement(reductionAction.toString());
         stack.push(newElement);
-
-        console.log(stack);
       } else {
         // Expansion
         children.push({ name: tokens[currentToken].lexeme.toString() });
