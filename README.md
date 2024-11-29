@@ -32,6 +32,12 @@ El analizador semántico se encarga de verificar la semántica de la cadena de e
 
 Finalmente esta fase toma el código previamente analizado y lo convierte a código máquina, un código que la máquina objetivo puede leer y puede ejecutar las instrucciones que se definieron al momento de escribir el programa.
 
-### Aplicación
+### Capturas
+
+Captura de la aplicación después de analizar el código introducido
 
 ![Captura 1](./img/screenshot-01.png)
+
+Visualización del árbol generado por el analizador sintáctico
+
+![Captura 2](./img/screenshot-02.png)
