@@ -22,7 +22,7 @@ Esta fase se encarga de tomar el código de entrada, leer caracter por caracter 
 
 - Analizador sintáctico
 
-El analizador sintáctico es una herramienta que se utiliza para anlizar la estructura gramatical de las palabras dentro de un texto. Este proceso implica descomponer la cadena de palabras en unidades gramaticales y determinarl cómo se relacionan entre sí según las reglas definidas del lenguaje.
+El analizador sintáctico es una herramienta que se utiliza para anlizar la estructura gramatical de las palabras dentro de un texto. Este proceso implica descomponer la cadena de palabras en unidades gramaticales y determinar cómo se relacionan entre sí según las reglas definidas del lenguaje.
 
 - Analizador semántico
 
