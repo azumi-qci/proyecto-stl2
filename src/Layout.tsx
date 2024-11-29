@@ -8,6 +8,7 @@ import { TreeNode } from './compiler/interfaces/treeNode';
 
 import { lexicAnalyzer } from './compiler/lexic/lexicAnalyzer';
 import { parserAnalyzer } from './compiler/parser/parserAnalyzer';
+import { semanticAnalyzer } from './compiler/semantic/semanticAnalyzer';
 
 import Button from './components/Button';
 import LexicAnalyzer from './components/LexicAnalyzer';
@@ -24,10 +25,26 @@ const Layout: FC = () => {
     tree?: TreeNode;
     error: boolean;
   }>();
+  const [error, setError] = useState<string>();
 
   const processCode = () => {
     setTokens(lexicAnalyzer(input));
-    setParserOutput(parserAnalyzer(input));
+
+    let parserOutput = parserAnalyzer(input);
+
+    setParserOutput(parserOutput);
+
+    if (parserOutput.tree) {
+      try {
+        semanticAnalyzer(parserOutput.tree);
+
+        if (error) {
+          setError(undefined);
+        }
+      } catch (error: any) {
+        setError(error.toString());
+      }
+    }
   };
 
   return (
@@ -53,6 +70,11 @@ const Layout: FC = () => {
         {parserOutput?.error ? (
           <div className='flex justify-end p-2'>
             <p className='font-bold text-red-500'>La entrada no es válida</p>
+          </div>
+        ) : null}
+        {error ? (
+          <div className='flex justify-end p-2'>
+            <p className='font-bold text-red-500'>{error}</p>
           </div>
         ) : null}
         {showTree ? (
