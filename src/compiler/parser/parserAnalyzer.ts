@@ -3,7 +3,6 @@ import { lexicAnalyzer } from '../lexic/lexicAnalyzer';
 import { lrTable } from './grammar';
 import { rules } from './rules';
 
-import { Children } from '../interfaces/children';
 import { History } from '../interfaces/history';
 import { TreeNode } from '../interfaces/treeNode';
 
@@ -26,7 +25,7 @@ export const parserAnalyzer = (
   // Define required variables
   let currentToken = 0;
   let history: History[] = [];
-  let children: Children[] = [];
+  let children: TreeNode[] = [];
   let tree: TreeNode | undefined = undefined;
 
   try {
