@@ -36,8 +36,12 @@ Finalmente esta fase toma el código previamente analizado y lo convierte a cód
 
 Captura de la aplicación después de analizar el código introducido
 
-![Captura 1](./img/screenshot-01.png)
+![Aplicación web](./img/screenshot-01.png)
 
 Visualización del árbol generado por el analizador sintáctico
 
-![Captura 2](./img/screenshot-02.png)
+![Analizador sintáctico](./img/screenshot-02.png)
+
+En caso que las variables se llegen a duplicar, el analizador semántico lo reportará como error
+
+![Error semántico](./img/screenshot-03.png)
